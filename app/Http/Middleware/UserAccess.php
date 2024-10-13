@@ -15,7 +15,7 @@ class UserAccess
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if ($request->user()->role_id == 1 || $request->user()->role_id == 2) {
+        if ($request->user()->role_id == $role) {
             return $next($request);
         }
         return response()->json([
